@@ -34,6 +34,13 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!IsOwner || playerCamera == null) return;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+
         // Get movement input
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
