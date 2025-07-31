@@ -5,6 +5,8 @@ using System.Collections;
 public class PlayerCombat : NetworkBehaviour
 {
     public GameObject slashVFXPrefab;  // Assign in the inspector
+    public GameObject fireballPrefab;
+    private Transform projectileSpawnPoint;
     
     private string[] debugWeaponsArray = new string[10];
     private int weaponIndex;
@@ -16,6 +18,7 @@ public class PlayerCombat : NetworkBehaviour
 
     void Awake(){
         hitLayers = LayerMask.GetMask("Attackable");
+        projectileSpawnPoint = transform.Find("ProjectileSpawn");
     }
 
     void Start()
@@ -35,10 +38,25 @@ public class PlayerCombat : NetworkBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3)) weaponIndex = 3;
 
         // Left-click attack (only if melee weapon is selected)
-        if (Input.GetMouseButtonDown(0) && debugWeaponsArray[weaponIndex] == "melee")
+        if (Input.GetMouseButtonDown(0))
         {
-            PerformMeleeAttackServerRpc();
+            switch(debugWeaponsArray[weaponIndex]){
+                case "melee":
+                    PerformMeleeAttackServerRpc();
+                    break;
+                case "magic":
+                    PerformMagicAttackServerRpc();
+                    break;
+            }
         }
+    }
+
+    [ServerRpc]
+    void PerformMagicAttackServerRpc(ServerRpcParams rpcParams = default){
+        var rotation = Quaternion.LookRotation(transform.forward);
+
+        var fireball = Instantiate(fireballPrefab, projectileSpawnPoint.position, rotation);
+        fireball.GetComponent<NetworkObject>().Spawn();
     }
 
     [ServerRpc]

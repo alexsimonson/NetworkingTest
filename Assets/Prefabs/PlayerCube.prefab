@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2352909384423728225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4219669848442315609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552296938296417218}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552296938296417218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219669848442315609}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.362, y: 0.107, z: 0.499}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2352909384423728225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7769434869458505601
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +106,7 @@ Transform:
   m_Children:
   - {fileID: 8753001703402704049}
   - {fileID: 9168634998157535127}
+  - {fileID: 1552296938296417218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1184866765758340099
@@ -323,9 +355,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   slashVFXPrefab: {fileID: 5545173171955001552, guid: 7ac879c2caac1ca41b6c438e77d8b25d, type: 3}
+  fireballPrefab: {fileID: 6426993942955699806, guid: b517d1f0b13119944933ede7a8dd8f75, type: 3}
   meleeRange: 2
   meleeRadius: 1
   meleeDamage: 10
+  fireballSpeed: 10
   hitLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -365,7 +399,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheck: {fileID: 0}
   groundDistance: 0.2
 --- !u!1 &8522451439580530663
 GameObject:
