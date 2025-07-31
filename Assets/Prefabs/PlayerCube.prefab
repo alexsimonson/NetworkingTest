@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2210869122589138100}
   - component: {fileID: 8498106196496377292}
   - component: {fileID: 2919729998197399055}
+  - component: {fileID: 6188569682272578132}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -274,6 +275,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &6188569682272578132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769434869458505601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eae699578a01bf4d931991542abae2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  slashVFXPrefab: {fileID: 5545173171955001552, guid: 7ac879c2caac1ca41b6c438e77d8b25d, type: 3}
+  slashSpawnPoint: {fileID: 0}
+  meleeRange: 2
+  meleeRadius: 1
+  meleeDamage: 10
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8522451439580530663
 GameObject:
   m_ObjectHideFlags: 0
