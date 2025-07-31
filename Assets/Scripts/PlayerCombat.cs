@@ -37,7 +37,6 @@ public class PlayerCombat : NetworkBehaviour
         // Left-click attack (only if melee weapon is selected)
         if (Input.GetMouseButtonDown(0) && debugWeaponsArray[weaponIndex] == "melee")
         {
-            Debug.Log("Should perform melee attack");
             PerformMeleeAttackServerRpc();
         }
     }
@@ -54,7 +53,6 @@ public class PlayerCombat : NetworkBehaviour
     {
         if (slashVFXPrefab)
         {
-            Debug.Log("Instantiating VFX");
             GameObject vfx = Instantiate(slashVFXPrefab, transform.position, transform.rotation);
             var ps = vfx.GetComponent<ParticleSystem>();
             if (ps != null)
@@ -65,8 +63,6 @@ public class PlayerCombat : NetworkBehaviour
             {
                 Debug.LogWarning("No ParticleSystem found on VFX prefab.");
             }
-            // vfx.transform.localScale = Vector3.one * 10000;
-            // Debug.DrawRay(transform.position, Vector3.forward * 0.5f, Color.green, 5f);
 
             Destroy(vfx, 2f);  // Destroy after duration
         }
