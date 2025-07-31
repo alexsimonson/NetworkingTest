@@ -17,6 +17,8 @@ public class PlayerMovement : NetworkBehaviour
 
     private Transform playerCamera;
 
+    private bool showMouse = false;
+
     void Start()
     {
         if (IsOwner)
@@ -34,10 +36,15 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!IsOwner || playerCamera == null) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            showMouse = !showMouse;
+            Cursor.visible = showMouse;
+            if(showMouse){
+                Cursor.lockState = CursorLockMode.Confined;
+            }else{
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
 
 
