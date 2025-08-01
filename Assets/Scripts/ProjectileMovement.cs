@@ -3,18 +3,14 @@ using Unity.Netcode;
 
 public class ProjectileMovement : NetworkBehaviour
 {
-
+    LayerMask groundLayer;
     public float projectileSpeed = 100f;
     public float projectileLife = 10f;  // seconds
     [SerializeField] private int projectileDamage = 50;
     public GameObject owner;
 
-    void Start()
-    {
-        if (IsServer)
-        {
-            Invoke(nameof(DestroySelf), projectileLife);
-        }
+    void Awake(){
+        groundLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
@@ -28,15 +24,17 @@ public class ProjectileMovement : NetworkBehaviour
         if(other.gameObject==owner) return;
         if(other.TryGetComponent<Stats>(out var damageable)){
             damageable.TakeDamage(projectileDamage);
-            DestroySelf();
+            RequestDespawnServerRpc();
+        }
+        if (((1 << other.gameObject.layer) & groundLayer) != 0)
+        {
+            Debug.Log("Hit Ground/Wall");
+            RequestDespawnServerRpc();
         }
     }
 
-    void DestroySelf()
-    {
-        if (NetworkObject != null && NetworkObject.IsSpawned)
-        {
-            NetworkObject.Despawn();
-        }
+    [ServerRpc]
+    void RequestDespawnServerRpc(){
+        GetComponent<NetworkObject>().Despawn();
     }
 }
