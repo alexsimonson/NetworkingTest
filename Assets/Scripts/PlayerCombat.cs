@@ -56,6 +56,7 @@ public class PlayerCombat : NetworkBehaviour
         var rotation = Quaternion.LookRotation(transform.forward);
 
         var fireball = Instantiate(fireballPrefab, projectileSpawnPoint.position, rotation);
+        fireball.GetComponent<ProjectileMovement>().owner = gameObject;
         fireball.GetComponent<NetworkObject>().Spawn();
     }
 
