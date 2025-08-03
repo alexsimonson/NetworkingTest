@@ -356,13 +356,17 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   slashVFXPrefab: {fileID: 5545173171955001552, guid: 7ac879c2caac1ca41b6c438e77d8b25d, type: 3}
   fireballPrefab: {fileID: 6426993942955699806, guid: b517d1f0b13119944933ede7a8dd8f75, type: 3}
+  muzzleFlashPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
   meleeRange: 2
   meleeRadius: 1
   meleeDamage: 10
-  fireballSpeed: 10
+  gunRange: 50
+  gunDamage: 35
   hitLayers:
     serializedVersion: 2
     m_Bits: 0
+  playerCam: {fileID: 8522451439580530663}
 --- !u!114 &8325416670479513811
 MonoBehaviour:
   m_ObjectHideFlags: 0
